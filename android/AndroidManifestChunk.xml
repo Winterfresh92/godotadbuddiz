@@ -1,0 +1,2 @@
+<activity android:name="com.purplebrain.adbuddiz.sdk.AdBuddizActivity" 
+               android:theme="@android:style/Theme.Translucent" />
