@@ -2,7 +2,10 @@
 #include "core/globals.h"
 #include "core/variant.h"
 #include "core/message_queue.h"
+
+#import <Foundation/Foundation.h>
 #import <AdBuddiz/AdBuddiz.h>
+#import <AdBuddiz/AdBuddizRewardedVideo.h>
 #import <UIKit/UIKit.h>
 
 @interface AdBuddizRewardedVideoDelegateBridge : NSObject<AdBuddizRewardedVideoDelegate>
@@ -16,7 +19,8 @@ static AdBuddizRewardedVideoDelegateBridge* delegate = NULL;
 void GodotAdbuddiz::init(bool test, String publisher_key) {
     if (!initialized) {
 
-        [AdBuddiz setPublisherKey:publisher_key];
+        NSString* key = [NSString stringWithCString:publisher_key.utf8().get_data() encoding:NSUTF8StringEncoding];
+        [AdBuddiz setPublisherKey:key];
 
         if (test) {
             [AdBuddiz setTestModeActive];
